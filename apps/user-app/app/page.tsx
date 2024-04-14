@@ -1,8 +1,10 @@
-export default function Page(): JSX.Element {
-    return (
-      <div className="text-red-500">
-        hello
-      </div>
-    );
-  }
-  
+"use client";
+
+import {useBalance} from "@bitpay/store/useBalance";
+
+export default function() {
+  const balance = useBalance();
+  return <div>
+    hi there {balance}
+  </div>
+}
