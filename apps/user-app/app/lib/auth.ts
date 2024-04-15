@@ -22,16 +22,20 @@ export const authOptions = {
           type: "text",
           placeholder: "1231231231",
         },
-        password: { label: "Password", type: "password", placeholder: "••••••••" },
+        password: {
+          label: "Password",
+          type: "password",
+          placeholder: "••••••••",
+        },
       },
       async authorize(credentials: any) {
         const existingUser = await db.user.findFirst({
           where: {
             number: credentials.phone,
-            email : credentials.email,
+            email: credentials.email,
           },
         });
-        
+
         if (existingUser) {
           const passwordValidation = await bcrypt.compare(
             credentials.password,
@@ -46,7 +50,7 @@ export const authOptions = {
           }
           return null;
         }
-        
+
         const hashedPassword = await bcrypt.hash(credentials.password, 10);
         try {
           const user = await db.user.create({
@@ -71,9 +75,8 @@ export const authOptions = {
       },
     }),
   ],
-  secret: process.env.JWT_SECRET || "secret",
+  secret: process.env.JWT_SECRET,
   callbacks: {
-    // TODO: can u fix the type here? Using any is bad
     async session({ token, session }: any) {
       session.user.id = token.sub;
 
