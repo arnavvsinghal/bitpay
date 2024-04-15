@@ -1,38 +1,42 @@
-import db from "@bitpay/db/client"
-import bcrypt from "bcrypt";
+import db from "@bitpay/db/client";
 import CredentialsProvider from "next-auth/providers/credentials";
+import bcrypt from "bcrypt";
 
 export const authOptions = {
   providers: [
     CredentialsProvider({
       name: "Credentials",
       credentials: {
-        name: { label: "Name", type: "text", placeholder: "tyler durden" },
+        name: {
+          label: "Name",
+          type: "text",
+          placeholder: "tyler durden",
+        },
         email: {
           label: "Email",
           type: "text",
           placeholder: "projectmayhem@fc.com",
         },
         phone: {
-          label: "Phone Number",
-          type: "number",
-          placeholder: "123123123",
+          label: "Phone number",
+          type: "text",
+          placeholder: "1231231231",
         },
-        password: {
-          label: "Password",
-          type: "password",
-          placeholder: "••••••••",
-        },
+        password: { label: "Password", type: "password", placeholder: "••••••••" },
       },
       async authorize(credentials: any) {
-        const hashedPassword = await bcrypt.hash(credentials.password, 10);
-        const existingUser = db.user.findFirst({
+        const existingUser = await db.user.findFirst({
           where: {
             number: credentials.phone,
-          }
+            email : credentials.email,
+          },
         });
-        if (existingUser!=null) {
-          const passwordValidation = await bcrypt.compare(credentials.password, existingUser.password);
+        
+        if (existingUser) {
+          const passwordValidation = await bcrypt.compare(
+            credentials.password,
+            existingUser.password
+          );
           if (passwordValidation) {
             return {
               id: existingUser.id.toString(),
@@ -42,10 +46,13 @@ export const authOptions = {
           }
           return null;
         }
-
+        
+        const hashedPassword = await bcrypt.hash(credentials.password, 10);
         try {
           const user = await db.user.create({
             data: {
+              email: "abs",
+              name: "as",
               number: credentials.phone,
               password: hashedPassword,
             },
@@ -66,6 +73,7 @@ export const authOptions = {
   ],
   secret: process.env.JWT_SECRET || "secret",
   callbacks: {
+    // TODO: can u fix the type here? Using any is bad
     async session({ token, session }: any) {
       session.user.id = token.sub;
 
