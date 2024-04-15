@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server"
-import { PrismaClient } from "@bitpay/db/client";
+import {PrismaClient} from "@bitpay/db/client"
 
 const client = new PrismaClient();
 
