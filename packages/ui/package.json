@@ -4,6 +4,10 @@
   "private": true,
   "exports": {
     "./Button": "./src/Button.tsx",
+    "./Card": "./src/Card.tsx",
+    "./Center": "./src/Center.tsx",
+    "./Select": "./src/Select.tsx",
+    "./TextInput": "./src/TextInput.tsx",
     "./Appbar": "./src/Appbar.tsx"
   },
   "scripts": {
