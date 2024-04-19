@@ -7,18 +7,19 @@ import { Boxes } from "../components/Box";
 import StickyScroll from "../components/StickyScroll";
 
 export default async function Page() {
-  const session = await getServerSession(authOptions);
-  console.log(session);
-  if (session) {
-    redirect("/dashboard");
-  }
+  // const session = await getServerSession(authOptions);
+  // console.log(session);
+  // if (session) {
+  //   redirect("/dashboard");
+  // }
   return (
     <div>
-      <div className="h-screen relative w-full overflow-hidden flex flex-col items-center justify-center rounded-lg bg-bgprimary">
+      <div className="h-screen relative w-full overflow-hidden flex flex-col items-center justify-center bg-bgprimary">
         <Boxes />
-        <Center>
-          <div className="text-7xl text-textprimary z-10">Hi</div>
-        </Center>
+        <div className="text-8xl py-4 text-textprimary z-10">BitPay</div>
+        <div className="text-2xl py-4 text-texttertiary z-10">
+          Revolutionizing digital transactions, one bit at a time.
+        </div>
       </div>
       <HorizontalScroll />
       <StickyScroll />
