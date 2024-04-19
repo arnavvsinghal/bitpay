@@ -13,7 +13,7 @@ module.exports = {
         bgsecondary: "hsla(0, 0%, 10%,0.7)",
         textprimary: "hsl(0, 0%, 100%);",
         textsecondary: "hsla(0, 0%, 100%, 0.9)",
-        texttertiary: "hsla(0, 0%, 100%, 0.6)",
+        texttertiary: "hsla(0, 0%, 100%, 0.7)",
         accentprimary: "hsl(196, 100%, 50%)",
         accentsecondary: "#9900ff",
         accenttertiary: "#d2c",
