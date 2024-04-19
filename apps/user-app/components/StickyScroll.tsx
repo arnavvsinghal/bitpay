@@ -10,6 +10,7 @@ const StickyScroll = () => {
       <motion.div className={`h-screen sticky top-32 ${colours[1]}`}/>
       <motion.div className={`h-screen sticky top-64 ${colours[2]}`}/>
       <motion.div className={`h-screen sticky top-96 ${colours[3]}`}/>
+      <motion.div className={`h-screen sticky top-[512px] ${colours[4]}`}/>
       <motion.div className={`h-screen sticky ${colours[4]}`}/>
     </div>
   );
