@@ -5,10 +5,8 @@ import { useEffect, useRef } from "react";
 // @refresh reset
 export const HorizontalScrollCard = ({
   id,
-  backgroundColor,
 }: {
   id: number;
-  backgroundColor: string;
 }) => {
   const ref = useRef(null);
   const isInView = useInView(ref);
