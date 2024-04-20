@@ -8,7 +8,6 @@ import {
 } from "framer-motion";
 import { useRef, useState } from "react";
 import { HorizontalScrollCard } from "./HorizontalScrollCard";
-import HorizontalScrollImage from "./HorizontalScrollImage";
 // @refresh reset
 export const HorizontalScroll = () => {
   const [src, SetSrc] = useState(0);
@@ -17,9 +16,18 @@ export const HorizontalScroll = () => {
     target: targetref,
   });
   const cards = [
-    ["A new type of Wallet.", "Hello"],
-    ["#1 in data privacy", "Hello"],
-    ["Customers love us", "Hello"],
+    [
+      "A new type of Wallet.",
+      "BitPay is the new way to conduct transactions! No need to rely on foreign platforms.",
+    ],
+    [
+      "#1 in data privacy",
+      "No user information selling. No tracking cookies. No Profiling. No Worries!",
+    ],
+    [
+      "Customers love us",
+      "We continuously engage with our customers, seeking their feedback to enhance our platform's accessibility and functionality.",
+    ],
   ];
   const x = useTransform(scrollYProgress, [0, 1], ["0%", "-200vw"]);
   useMotionValueEvent(scrollYProgress, "change", (latest) => {
@@ -47,7 +55,6 @@ export const HorizontalScroll = () => {
             );
           })}
         </motion.div>
-        <HorizontalScrollImage src={src} />
       </div>
     </div>
   );
