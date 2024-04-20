@@ -1,6 +1,5 @@
 import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
-import bcrypt from "bcrypt";
 
 async function main() {
   const alice = await prisma.user.upsert({
@@ -40,9 +39,9 @@ async function main() {
       email: "bob@email.com",
       Balance: {
         create: {
-            amount: 2000,
-            locked: 0
-        }
+          amount: 2000,
+          locked: 0,
+        },
       },
       OnRampTransaction: {
         create: {

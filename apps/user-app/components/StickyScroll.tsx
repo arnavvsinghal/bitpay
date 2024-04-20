@@ -68,7 +68,6 @@ const StickyScroll = () => {
             />
           </div>
         </div>
-
       </motion.div>
     </div>
   );

@@ -6,12 +6,7 @@ export const Boxes = React.memo(() => {
   const rows = new Array(150).fill(1);
   const cols = new Array(100).fill(1);
 
-  const colours = [
-    "rgb(0,187,255)",
-    "rgb(153,0,255)",
-    "#d2c",
-    "#ff0066",
-  ];
+  const colours = ["rgb(0,187,255)", "rgb(153,0,255)", "#d2c", "#ff0066"];
   const getRandomColor = () => {
     return colours[Math.floor(Math.random() * colours.length)];
   };
