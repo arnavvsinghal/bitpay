@@ -1,10 +1,13 @@
 "use client";
 // @refresh reset
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import StickyScrollHeading from "./StickyScrollHeading";
 import { AnimatedNumber } from "./AnimatedNumber";
+import { useRef } from "react";
 // @refresh reset
 const StickyScroll = () => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true });
   const colours = [
     "bg-accentprimary",
     "bg-accentsecondary",
@@ -27,12 +30,45 @@ const StickyScroll = () => {
         <StickyScrollHeading>MAKE WITHDRAWALS</StickyScrollHeading>
       </motion.div>
       <motion.div className={`h-screen sticky top-[512px] ${colours[4]}`}>
-        <StickyScrollHeading>AND MUCH MORE!</StickyScrollHeading>
-      </motion.div>
-      <motion.div className={`h-screen sticky top-[512px] ${colours[4]}`}>
         <StickyScrollHeading>
-          <AnimatedNumber value={1000} />
+          <div className="text-9xl">AND MUCH MORE!</div>
         </StickyScrollHeading>
+      </motion.div>
+
+      <motion.div
+        className={`h-screen sticky text-center top-[512px] ${colours[4]}`}
+      >
+        <StickyScrollHeading>
+          <div className="py-8">Building Trust Since '24</div>
+          <div className="grid grid-cols-3 justify-center	justify-items-center py-8 px-8 text-texttertiary">
+            <div className="">
+              <AnimatedNumber value={50} />
+              <div className="text-4xl">Users</div>
+            </div>
+            <div className="">
+              <AnimatedNumber value={1000} />
+              <div className="text-4xl">Transactions Completed</div>
+            </div>
+            <div className="">
+              <AnimatedNumber value={10} />
+              <div className="text-4xl">Merchants</div>
+            </div>
+          </div>
+        </StickyScrollHeading>
+
+        <div className="flex justify-center font-medium text-textprimary text-9xl mt-16 transition ease-in-out duration-500 hover:scale-105">
+          <div>
+            SIGNUP NOW!
+            <motion.div
+              className="h-3 w-full bg-accentquaternary origin-left"
+              ref={ref}
+              initial={{ scaleX: 0 }}
+              transition={{ delay: 0.5, duration: 2 }}
+              animate={isInView ? { scaleX: 1 } : { scaleX: 0 }}
+            />
+          </div>
+        </div>
+
       </motion.div>
     </div>
   );
