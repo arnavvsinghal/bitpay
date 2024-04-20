@@ -15,7 +15,7 @@ export function AnimatedNumber({ value }: { value: number }) {
     }
   }, [inView, value]);
 
-  const spring = useSpring(val, { mass: 0.8, stiffness: 75, damping: 15 });
+  const spring = useSpring(val, { mass: 0.8, stiffness: 10, damping: 15 });
   const display = useTransform(spring, (current) =>
     Math.round(current).toLocaleString()
   );
@@ -24,5 +24,9 @@ export function AnimatedNumber({ value }: { value: number }) {
     spring.set(val);
   }, [spring, val]);
 
-  return <motion.span ref={ref}>{display}</motion.span>;
+  return (
+    <div>
+      <motion.span ref={ref}>{display}</motion.span>+
+    </div>
+  );
 }
