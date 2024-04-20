@@ -35,18 +35,26 @@ export const HorizontalScrollCard = ({
             className="grow-1 h-3 w-full bg-accentquaternary origin-left"
             initial={{ scaleX: 0 }}
             animate={isInView ? { scaleX: 1 } : { scaleX: 0 }}
-            transition={{ delay: 1, duration: 2 }}
+            transition={{ delay: 1, duration: 1 }}
           />
         </div>
       </div>
-      <div className="flex justify-center h-1/4 w-auto mt-4 mb-8">
+      <motion.div
+        initial={{ y: 25 }}
+        animate={isInView ? { y: [25,-5,0] } : { y: 50 }}
+        transition={{ delay: 1, duration: 2 }}
+        className="flex justify-center h-1/4 w-auto mt-4 mb-8"
+      >
         <HorizontalScrollImage src={id} />
-      </div>
-      <div
+      </motion.div>
+      <motion.div
+      initial={{ opacity:0}}
+      animate={isInView ? {opacity:1} : { opacity:0 }}
+      transition={{ delay: 2, duration: 2 }}
         className={`text-6xl px-4 pt-4 w-full origin-bottom ${id % 2 ? "text-texttertiary" : "text-bgsecondary"}`}
       >
         {content}
-      </div>
+      </motion.div>
     </div>
   );
 };
