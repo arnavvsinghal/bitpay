@@ -43,7 +43,7 @@ export const HorizontalScrollCard = ({
         <HorizontalScrollImage src={id} />
       </div>
       <div
-        className={`text-2xl ${id % 2 ? "text-texttertiary" : "text-bgprimary"}`}
+        className={`text-6xl px-4 pt-4 w-full origin-bottom ${id % 2 ? "text-texttertiary" : "text-bgsecondary"}`}
       >
         {content}
       </div>
