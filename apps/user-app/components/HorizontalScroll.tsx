@@ -19,7 +19,7 @@ export const HorizontalScroll = () => {
       "No user information selling. No tracking cookies. No Profiling. No Worries!",
     ],
     [
-      "Customers love us <3.",
+      "Users love us <3.",
       "We continuously engage with our customers, seeking their feedback to enhance our platform's accessibility and functionality.",
     ],
   ];
