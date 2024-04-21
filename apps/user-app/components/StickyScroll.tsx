@@ -63,7 +63,7 @@ const StickyScroll = () => {
               await signIn("google", { callbackUrl: "/dashboard" })
             }
           >
-            SIGNIN NOW!
+            SIGNUP NOW!
             <motion.div
               className="h-3 w-full bg-accentquaternary origin-left"
               ref={ref}

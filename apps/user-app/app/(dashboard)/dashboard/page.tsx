@@ -5,7 +5,6 @@ import { signOut, useSession } from "next-auth/react";
 import { redirect } from "next/navigation";
 
 export default function () {
-  const session = useSession();
   const { status, data } = useSession({
     required: true,
     onUnauthenticated() {
@@ -17,7 +16,7 @@ export default function () {
     <div className="">
       <div>Dashboard</div>
       <button onClick={async () => await signOut({ callbackUrl: "/" })}>
-        {session.data?.user?.email}
+        {data?.user?.email}
       </button>
     </div>
   );
