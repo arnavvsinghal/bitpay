@@ -28,7 +28,7 @@ export const PageHeading = () => {
       >
         Already have an account?
         <button
-          className="text-textsecondary"
+          className="text-textprimary"
           onClick={async () =>
             await signIn("google", { callbackUrl: "/dashboard" })
           }
