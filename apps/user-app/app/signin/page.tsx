@@ -1,29 +1,23 @@
-"use client"
-import { signIn } from 'next-auth/react';
-import { useRouter } from 'next/navigation';
+"use client";
+import { signIn, useSession } from "next-auth/react";
+import { redirect, useRouter } from "next/navigation";
 
-export default function() {
-    const router = useRouter();
-    
-    return <div>
-        <button onClick={async () => {
-            await signIn("google");
-        }}>Login with google</button>
+export default function () {
+  const session = useSession();
+  if (session.data?.user) {
+    redirect("/dashboard");
+  }
 
-        <br />
-        <button onClick={async () => {
-            await signIn("github");
-        }}>Login with Github</button>
-        <br />
-        <button onClick={async () => {
-            const res = await signIn("credentials", {
-                username: "",
-                password: "",
-                redirect: false,
-            });
-            console.log(res);
-            router.push("/")
-        }}>Login with email</button>
-        
+  return (
+    <div>
+      <div className="h-40 text-red-700">{session.data?.user?.email}</div>
+      <button
+        onClick={() => {
+          signIn("google", { callbackUrl: "/dashboard" });
+        }}
+      >
+        Login with google
+      </button>
     </div>
+  );
 }

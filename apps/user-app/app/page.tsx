@@ -11,11 +11,9 @@ import { useSession } from "next-auth/react";
 
 export default function Page() {
   const session = useSession();
-  console.log(session);
-  // const session = await getServerSession(authOptions);
-  // if (session) {
-  //   redirect("/dashboard");
-  // }
+  if (session.data?.user) {
+    redirect("/dashboard");
+  }
   return (
     <div>
       <div className="h-screen relative w-full overflow-hidden flex flex-col items-center justify-center bg-bgprimary">
