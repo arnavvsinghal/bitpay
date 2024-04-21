@@ -1,4 +1,3 @@
-"use client";
 // @refresh reset
 import { useScroll, useTransform, motion, useInView } from "framer-motion";
 import { useEffect, useRef } from "react";
