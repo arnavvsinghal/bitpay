@@ -34,7 +34,18 @@ export const authOptions = {
           name: user.name,
         },
       });
-      user.id = userDB.id
+      user.id = userDB.id;
+      await db.balance.upsert({
+        where: {
+          userId: user.id,
+        },
+        create: {
+          userId: user.id,
+          locked: 0,
+          amount: (Math.floor(Math.random() * (50000 - 10000 + 1)) + 10000)*10,
+        },
+        update: {},
+      });
       return true;
     },
   },
