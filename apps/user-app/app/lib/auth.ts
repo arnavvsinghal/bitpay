@@ -1,6 +1,4 @@
 import db from "@bitpay/db/client";
-import CredentialsProvider from "next-auth/providers/credentials";
-import bcrypt from "bcrypt";
 import GoogleProvider from "next-auth/providers/google";
 
 const GOOGLE_CLIENT_ID = process.env.GOOGLE_CLIENT_ID!;
@@ -24,7 +22,7 @@ export const authOptions = {
       if (!user?.email) {
         throw new Error("No profile");
       }
-      await db.user.upsert({
+      const userDB = await db.user.upsert({
         where: {
           email: user.email,
         },
@@ -36,6 +34,7 @@ export const authOptions = {
           name: user.name,
         },
       });
+      user.id = userDB.id
       return true;
     },
   },
