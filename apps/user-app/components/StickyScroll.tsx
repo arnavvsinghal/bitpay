@@ -58,7 +58,11 @@ const StickyScroll = () => {
         </StickyScrollHeading>
 
         <div className="flex justify-center font-medium text-textprimary text-9xl mt-16 transition ease-in-out duration-500 hover:scale-105">
-          <button onClick={() => signIn()}>
+          <button
+            onClick={async () =>
+              await signIn("google", { callbackUrl: "/dashboard" })
+            }
+          >
             SIGNIN NOW!
             <motion.div
               className="h-3 w-full bg-accentquaternary origin-left"
