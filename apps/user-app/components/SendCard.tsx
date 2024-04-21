@@ -1,3 +1,4 @@
+"use client"
 import { Button } from "@repo/ui/Button";
 import { Card } from "@repo/ui/Card";
 import { Center } from "@repo/ui/Center";
