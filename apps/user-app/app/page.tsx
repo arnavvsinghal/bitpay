@@ -7,10 +7,12 @@ import { HorizontalScroll } from "../components/HorizontalScroll";
 import { Boxes } from "../components/Box";
 import { motion } from "framer-motion";
 import StickyScroll from "../components/StickyScroll";
+import { useSession } from "next-auth/react";
 
-export default async function Page() {
+export default function Page() {
+  const session = useSession();
+  console.log(session);
   // const session = await getServerSession(authOptions);
-  // console.log(session);
   // if (session) {
   //   redirect("/dashboard");
   // }

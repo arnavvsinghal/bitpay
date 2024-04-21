@@ -4,6 +4,7 @@ import { motion, useInView } from "framer-motion";
 import StickyScrollHeading from "./StickyScrollHeading";
 import { AnimatedNumber } from "./AnimatedNumber";
 import { useRef } from "react";
+import { signIn } from "next-auth/react";
 // @refresh reset
 const StickyScroll = () => {
   const ref = useRef(null);
@@ -57,8 +58,8 @@ const StickyScroll = () => {
         </StickyScrollHeading>
 
         <div className="flex justify-center font-medium text-textprimary text-9xl mt-16 transition ease-in-out duration-500 hover:scale-105">
-          <div>
-            SIGNUP NOW!
+          <button onClick={() => signIn()}>
+            SIGNIN NOW!
             <motion.div
               className="h-3 w-full bg-accentquaternary origin-left"
               ref={ref}
@@ -66,7 +67,7 @@ const StickyScroll = () => {
               transition={{ delay: 0.5, duration: 2 }}
               animate={isInView ? { scaleX: 1 } : { scaleX: 0 }}
             />
-          </div>
+          </button>
         </div>
       </motion.div>
     </div>
