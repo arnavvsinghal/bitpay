@@ -1,6 +1,6 @@
 // @refresh reset
-import { useScroll, useTransform, motion, useInView } from "framer-motion";
-import { useEffect, useRef } from "react";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
 import HorizontalScrollImage from "./HorizontalScrollImage";
 // @refresh reset
 export const HorizontalScrollCard = ({
