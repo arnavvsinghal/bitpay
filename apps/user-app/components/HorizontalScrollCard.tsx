@@ -39,12 +39,14 @@ export const HorizontalScrollCard = ({
         </div>
       </div>
       <motion.div
-        initial={{ y: 25 }}
-        animate={isInView ? { y: [25, -5, 0] } : { y: 50 }}
+        initial={{ y: 25, opacity: 0 }}
+        animate={
+          isInView ? { y: [25, -5, 0], opacity: 1 } : { y: 50, opacity: 0 }
+        }
         transition={{ delay: 1, duration: 2 }}
         className="flex justify-center h-1/4 w-auto mt-4 mb-8"
       >
-        <HorizontalScrollImage src={id} />
+        <HorizontalScrollImage isInView={isInView} src={id} />
       </motion.div>
       <motion.div
         initial={{ opacity: 0 }}
